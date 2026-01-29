@@ -22,7 +22,6 @@ body {
 }
 
 .nav-menu-links-list a {
-  text-shadow: 0ex 2ex 0ex #ff0000;
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
@@ -43,42 +42,20 @@ body {
   position: relative;
   transform: translateY(0);
   will-change: transform;
-}
-
-@keyframes moveUp {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-2ex);
-  }
-}
-
-@keyframes moveDown {
-  from {
-    transform: translateY(-2ex);
-  }
-  to {
-    transform: translateY(0);
-  }
+  transition:
+    transform 0.64s cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 0.64s cubic-bezier(0.2, 0.8, 0.2, 1),
+    text-shadow 0.64s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--delay, 0s);
+  text-shadow: 0ex 2ex 0ex rgba(255, 0, 0, 0);
 }
 
 .nav-menu-links-list a:hover .letter {
-  animation-name: moveUp;
-  animation-duration: 0.64s;
-  animation-delay: var(--delay, 0s);
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-  animation-fill-mode: both;
-  animation-direction: alternate;
-  animation-iteration-count: 1;
+  transform: translateY(-2ex);
+  text-shadow: 0ex 2ex 0ex #42bf83;
 }
 
 .nav-menu-links-list a:not(:hover) .letter {
-  animation-name: moveDown;
-  animation-duration: 0.64s;
-  animation-delay: var(--delay, 0s);
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-  animation-fill-mode: both;
-  animation-direction: normal;
-  animation-iteration-count: 1;
+  transform: translateY(0);
+  text-shadow: 0ex 2ex 0ex rgba(255, 0, 0, 0);
 }
